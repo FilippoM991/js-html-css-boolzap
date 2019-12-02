@@ -51,15 +51,30 @@ img {
 }
 .header-container-left {
     width: 35%;
-    border-right: 1px solid grey;
+    border-right: 1px solid #DFDFDF;
     height: 100%;
     padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.tre-icone {
+    align-self: center;
+}
+.tre-icone i {
+    color: #B1B1B1;
+    margin-right: 10px;
+}
+.tre-icone i:hover {
+    cursor: pointer;
 }
 .header-container-right {
     width: 65%;
     height: 100%;
     padding: 5px;
+    padding-right: 10px;
     display: flex;
+    justify-content: space-between;
+
 }
 .main-container {
     height: calc(100% - 50px);
@@ -68,13 +83,29 @@ img {
 }
 .main-container-left{
     width: 35%;
-    border-right: 1px solid grey;
+    border-right: 1px solid #DFDFDF;
     height: 100%;
 }
 .blu {
     height: 60px;
     background-color:#8EDAFC;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
 }
+.blu i {
+    font-size: 16px;
+    margin-right: 10px;
+    background-color: white;
+    color: #8EDAFC;
+    border-radius: 100%;
+    padding: 5px;
+}
+.blu a {
+    color:#5D9EB8;
+}
+
 .cerca-contatto {
     height: 40px;
     border: 5px solid #FAFAF8;
@@ -117,6 +148,10 @@ img {
     display: flex;
     padding:5px;
     justify-content: space-between;
+}
+.singolo-contatto:hover {
+    cursor: pointer;
+    background-color:rgba(0, 0, 0, 0.1);
 }
 .singolo-contatto.active {
     background-color: #EAEAEA;
