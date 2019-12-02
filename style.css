@@ -22,6 +22,28 @@ main {
     display: flex;
     flex-direction: column;
 }
+.immagine-nome-informazione {
+    display: flex;
+}
+img {
+    width: 40px;
+    background-color: white;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.nome-informazione {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.nome-informazione small {
+    color: grey;
+}
+.ora {
+    font-size: 10px;
+    color: lightgrey;
+    margin-top: 10px;
+}
+
 .header-container{
     height: 50px;
     background-color: #EAEAEA;
@@ -31,10 +53,13 @@ main {
     width: 35%;
     border-right: 1px solid grey;
     height: 100%;
+    padding: 5px;
 }
 .header-container-right {
     width: 65%;
     height: 100%;
+    padding: 5px;
+    display: flex;
 }
 .main-container {
     height: calc(100% - 50px);
@@ -53,7 +78,35 @@ main {
 .cerca-contatto {
     height: 40px;
     border: 5px solid #FAFAF8;
+    display: flex;
 }
+.cerca-icon {
+    width: 15%;
+    height: 100%;
+    border-right: 1px solid #FAFAF8;
+    color: lightgrey;
+    text-align: center;
+}
+.cerca-icon i {
+    margin-top: 8px;
+    font-size: 15px;
+}
+.cerca-icon i:hover {
+    cursor: pointer;
+}
+.cerca-o-inizia {
+    width: 85%;
+    height: 100%;
+}
+#cerca-in-chat {
+    width: 100%;
+    margin-top: 5px;
+    padding: 3px;
+    border: none;
+    color: grey;
+    font-size: 12px;
+}
+
 .contatti {
     overflow-y: scroll;
     height: calc(100% - 100px);
@@ -61,6 +114,12 @@ main {
 .singolo-contatto{
     height: 50px;
     border-bottom: 2px solid #FAFAF8;
+    display: flex;
+    padding:5px;
+    justify-content: space-between;
+}
+.singolo-contatto.active {
+    background-color: #EAEAEA;
 }
 .main-container-right {
     width: 65%;
@@ -70,7 +129,7 @@ main {
     height: calc(100% - 50px);
     background-color: #E5DCD5;
     overflow-y: scroll;
-    padding: 50px;
+    padding: 40px;
     flex-direction: column;
 }
 .messaggio {
@@ -101,7 +160,7 @@ main {
     color: grey;
 }
 .scrivi-messaggio i {
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: 20px;
 }
 .scrivi-messaggio i:hover {
@@ -113,4 +172,5 @@ main {
     border-radius: 5px;
     color: black;
     font-size: 12px;
+    border: none;
 }
