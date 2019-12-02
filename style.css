@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background-color: #358675;
+    height: 100px;
+}
+main {
+    height: calc(100vh - 100px);
+    background-color: #D2D4C9;
+}
+.container {
+    height: 95vh;
+    background-color: yellow;
+    width: 80%;
+    margin: auto;
+    position: absolute;
+    top :20px;
+    left:10%;
+    display: flex;
+    flex-direction: column;
+}
+.header-container{
+    height: 50px;
+    background-color: #EAEAEA;
+    display: flex;
+}
+.header-container-left {
+    width: 35%;
+    border-right: 1px solid grey;
+    height: 100%;
+}
+.header-container-right {
+    width: 65%;
+    height: 100%;
+}
+.main-container {
+    height: calc(100% - 50px);
+    display: flex;
+    background-color: white;
+}
+.main-container-left{
+    width: 35%;
+    border-right: 1px solid grey;
+    height: 100%;
+}
+.blu {
+    height: 60px;
+    background-color:#8EDAFC;
+}
+.cerca-contatto {
+    height: 40px;
+    border: 5px solid #FAFAF8;
+}
+.contatti {
+    overflow-y: scroll;
+    height: calc(100% - 100px);
+}
+.singolo-contatto{
+    height: 50px;
+    border-bottom: 2px solid #FAFAF8;
+}
+.main-container-right {
+    width: 65%;
+    height: 100%;
+}
+.main-messaggi {
+    height: calc(100% - 50px);
+    background-color: #E5DCD5;
+    overflow-y: scroll;
+}
+.scrivi-messaggio {
+    height: 50px;
+    background-color: #F3EEEA;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px 15px;
+    color: grey;
+}
+.scrivi-messaggio i {
+    margin-top: 8px;
+    font-size: 20px;
+}
+.scrivi-messaggio i:hover {
+    cursor: pointer;
+}
+#invia-messaggio {
+    width: 550px;
+    padding: 8px;
+    border-radius: 2px;
+    color: #D3D3D3;
+    font-size: 12px;
+
+}
