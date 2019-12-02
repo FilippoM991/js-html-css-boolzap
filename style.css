@@ -70,7 +70,28 @@ main {
     height: calc(100% - 50px);
     background-color: #E5DCD5;
     overflow-y: scroll;
+    padding: 50px;
+    flex-direction: column;
 }
+.messaggio {
+    max-width: 30%;
+    min-width: 20px;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 14px;
+    content: '';
+    display: table;
+    clear: both;
+}
+.ricevuto {
+    background-color: white;
+
+}
+.inviato {
+    background-color: lightgreen;
+    float: right;
+}
+
 .scrivi-messaggio {
     height: 50px;
     background-color: #F3EEEA;
@@ -89,8 +110,7 @@ main {
 #invia-messaggio {
     width: 550px;
     padding: 8px;
-    border-radius: 2px;
-    color: #D3D3D3;
+    border-radius: 5px;
+    color: black;
     font-size: 12px;
-
 }
