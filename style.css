@@ -185,6 +185,9 @@ img {
     background-color: lightgreen;
     float: right;
 }
+.template {
+    display: none;
+}
 
 .scrivi-messaggio {
     height: 50px;
