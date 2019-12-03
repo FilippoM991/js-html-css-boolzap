@@ -35,11 +35,17 @@ $("#invia-messaggio").keyup(function(event){
     }
 })
 $(".cerca-icon i").click(function(){
+    search();
+})
+$("#cerca-in-chat").keyup(function(event){
+    search();
+})
+function search(){
     var nomeDaCercare = $("#cerca-in-chat").val();
     if(nomeDaCercare.length != 0){
         $(".singolo-contatto").each(function(){
             var nomeContatto = $(this).find("p").text();
-            if (nomeDaCercare.toLowerCase() == nomeContatto.toLowerCase()){
+            if (nomeContatto.toLowerCase().includes(nomeDaCercare.toLowerCase())){
                 $(this).show();
             } else {
                 $(this).hide();
@@ -48,4 +54,4 @@ $(".cerca-icon i").click(function(){
     } else {
         $(".singolo-contatto").show();
     }
-})
+}
