@@ -1,11 +1,11 @@
 $(".vocale-invia i").click(function(){
     invia_messaggio();
-    messaggio_risposta();
+    setTimeout(messaggio_risposta, 1000);
 })
 $("#invia-messaggio").keypress(function(event){
     if(event.which == 13){
         invia_messaggio();
-        messaggio_risposta();
+        setTimeout(messaggio_risposta, 1000);
     }
 })
 function invia_messaggio(){
@@ -19,12 +19,10 @@ function invia_messaggio(){
     }
 }
 function messaggio_risposta(){
-    setTimeout(function(){
         var messaggio = $(".messaggio.template").clone();
         messaggio.children(".testo-messaggio").text("Filippo sei veramente un grande!");
         messaggio.removeClass("template").addClass("ricevuto");
         $(".conversazione.active").append(messaggio);
-    },1000)
 }
 $("#invia-messaggio").keyup(function(event){
     var messaggioUtente = $("#invia-messaggio").val();
@@ -55,3 +53,14 @@ function search(){
         $(".singolo-contatto").show();
     }
 }
+$(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
+
+$(".singolo-contatto").click(function(){
+    var nuovoContattoPosition = $(this).index();
+    $(".singolo-contatto.active").removeClass("active");
+    $(this).addClass("active");
+    $(".conversazione.active").removeClass("active")
+    var nuovaConversazioneActive = $(".conversazione").eq(nuovoContattoPosition);
+    nuovaConversazioneActive.addClass("active");
+    $(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
+})
