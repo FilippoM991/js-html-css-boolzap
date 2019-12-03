@@ -174,7 +174,7 @@ img {
 }
 .messaggio {
     max-width: 60%;
-    min-width: 100px;
+    min-width: 30px;
     font-size: 14px;
     padding: 10px 40px 10px 10px;
     border-radius: 14px;

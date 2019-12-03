@@ -1,9 +1,11 @@
 $(".vocale-invia i").click(function(){
     invia_messaggio();
+    messaggio_risposta();
 })
 $("#invia-messaggio").keypress(function(event){
     if(event.which == 13){
         invia_messaggio();
+        messaggio_risposta();
     }
 })
 function invia_messaggio(){
@@ -15,6 +17,14 @@ function invia_messaggio(){
         $(".conversazione.active").append(messaggio);
         $("#invia-messaggio").val("");
     }
+}
+function messaggio_risposta(){
+    setTimeout(function(){
+        var messaggio = $(".messaggio.template").clone();
+        messaggio.children(".testo-messaggio").text("ok");
+        messaggio.removeClass("template").addClass("ricevuto");
+        $(".conversazione.active").append(messaggio);
+    },1000)
 }
 $("#invia-messaggio").keyup(function(event){
     var messaggioUtente = $("#invia-messaggio").val();
