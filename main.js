@@ -21,7 +21,7 @@ function invia_messaggio(){
 function messaggio_risposta(){
     setTimeout(function(){
         var messaggio = $(".messaggio.template").clone();
-        messaggio.children(".testo-messaggio").text("ok");
+        messaggio.children(".testo-messaggio").text("Filippo sei veramente un grande!");
         messaggio.removeClass("template").addClass("ricevuto");
         $(".conversazione.active").append(messaggio);
     },1000)
@@ -32,5 +32,20 @@ $("#invia-messaggio").keyup(function(event){
         $(".vocale-invia i").removeClass("fa fa-microphone").addClass("fas fa-paper-plane")
     } else {
         $(".vocale-invia i").addClass("fa fa-microphone").removeClass("fas fa-paper-plane")
+    }
+})
+$(".cerca-icon i").click(function(){
+    var nomeDaCercare = $("#cerca-in-chat").val();
+    if(nomeDaCercare.length != 0){
+        $(".singolo-contatto").each(function(){
+            var nomeContatto = $(this).find("p").text();
+            if (nomeDaCercare.toLowerCase() == nomeContatto.toLowerCase()){
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    } else {
+        $(".singolo-contatto").show();
     }
 })
