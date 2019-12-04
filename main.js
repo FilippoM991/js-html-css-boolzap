@@ -96,6 +96,6 @@ $(document).on("click", ".messaggio", function(){
     }
 
 } )
-// $(document).on("click", ".delete", function(){
-//     $(this).parent(".messaggio").remove();
-// })
+$(document).on("click", ".delete", function(){
+    $(this).parents(".messaggio").remove();
+})
