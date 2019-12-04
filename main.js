@@ -87,6 +87,7 @@ $(".singolo-contatto").click(function(){
     // anche il nome del contatto in alto di cui cambia la conversazione cambia
     $(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
 })
+// per far si di poter interagire con i messaggi creati successivamente bisogna tenere l attenzione sul documento intero e usare on, facciamo comparire e scomparire il menu a tendina,se clicchiamo sullo stesso si chiude nel caso sia aperto,cliccare su uno fa chiudere gli altri
 $(document).on("click", ".messaggio", function(){
     if ($(this).children(".menu_tendina").is(":visible")) {
         $(".menu_tendina").hide();
@@ -96,6 +97,7 @@ $(document).on("click", ".messaggio", function(){
     }
 
 } )
+// usiamo lo stesso metodo per poter cliccare su "delete message"..usiamo la funzione parents per collegarci al parente di questo this che è .delete..parents con la s altrimenti prende l antenatto diretto..usiamo la funzione remove()
 $(document).on("click", ".delete", function(){
     $(this).parents(".messaggio").remove();
 })
