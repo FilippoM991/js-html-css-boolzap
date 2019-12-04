@@ -190,7 +190,7 @@ img {
 }
 .orario-messaggio {
     position: absolute;
-    bottom: 2px;
+    bottom: 10px;
     right: 10px;
     font-size: 10px;
     color: grey;
@@ -206,6 +206,25 @@ img {
 }
 .template {
     display: none;
+}
+.menu_tendina {
+    width: 130px;
+    height: 75px;
+    background-color: white;
+    position: absolute;
+    bottom: -65px;
+    right: 10%;
+    padding: 10px;
+    line-height: 28px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 0px 4px 0px, rgba(0, 0, 0, 0.08) 0px 8px 16px 0px;
+    display:none;
+}
+.menu_tendina span{
+    padding: 10px;
+}
+.menu_tendina span:hover {
+    background-color: #EAEAEA;
+    cursor:pointer;
 }
 
 .scrivi-messaggio {

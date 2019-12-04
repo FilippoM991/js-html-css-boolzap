@@ -1,21 +1,28 @@
 $(".vocale-invia i").click(function(){
     // quando clicco sull icona richiamo funzione di invio e risposta a tempo
-    invia_messaggio();
-    setTimeout(messaggio_risposta, 1000);
+    // prendo ciò che viene scritto all interno dell imput
+    var messaggioUtente = $("#invia-messaggio").val();
+    // se è diverso da zero
+    if (messaggioUtente.length != 0){
+        invia_messaggio();
+        setTimeout(messaggio_risposta, 1000);
+    }
+
 })
 $("#invia-messaggio").keypress(function(event){
     // stesso procedimento ma per il tasto invio,l evento è collegato appunto al tasto 13
     if(event.which == 13){
-        invia_messaggio();
-        setTimeout(messaggio_risposta, 1000);
+        var messaggioUtente = $("#invia-messaggio").val();
+        if (messaggioUtente.length != 0){
+            invia_messaggio();
+            setTimeout(messaggio_risposta, 1000);
+        }
     }
 })
 // funzione relativa all invio del messaggio da parte nostra
 function invia_messaggio(){
-    // prendo ciò che viene scritto all interno dell imput
-    var messaggioUtente = $("#invia-messaggio").val();
-    // se è diverso da zero
-    if (messaggioUtente.length != 0) {
+        // prendo ciò che viene scritto all interno dell imput
+        var messaggioUtente = $("#invia-messaggio").val();
         // clono il messaggio template che ho usato come struttura del messaggio generico nell html che è nascosto con display none
         var messaggio = $(".messaggio.template").clone();
         // vado a inserire ciò che ho scritto nel punto che mi serve all interno della copia
@@ -26,7 +33,6 @@ function invia_messaggio(){
         $(".conversazione.active").append(messaggio);
         // resetto l interno dell imput
         $("#invia-messaggio").val("");
-    }
 }
 // funzione per la risposta del computer statica, viene richiamata dentro alla funzione set timeout all inizio, il procedimento è simile a quello della nostro messaggio
 function messaggio_risposta(){
@@ -81,3 +87,15 @@ $(".singolo-contatto").click(function(){
     // anche il nome del contatto in alto di cui cambia la conversazione cambia
     $(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
 })
+$(document).on("click", ".messaggio", function(){
+    if ($(this).children(".menu_tendina").is(":visible")) {
+        $(".menu_tendina").hide();
+    } else {
+        $(".menu_tendina").hide();
+        $(this).children(".menu_tendina").show();
+    }
+
+} )
+// $(document).on("click", ".delete", function(){
+//     $(this).parent(".messaggio").remove();
+// })
