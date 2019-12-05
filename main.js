@@ -225,7 +225,27 @@ var pannelliConversazioni = {
         }
     ],
 }
-for (var pannello in pannelliConversazioni) {
-    console.log(pannello);
-    console.log(pannelliConversazioni[pannello]);
+// uso ciclo per gli oggetti
+for (var codicePannello in pannelliConversazioni) {
+    console.log(pannelliConversazioni[codicePannello]);
+    // creo una variabile che mi rappresenta il contenitore dei due messaggi
+    var messages = pannelliConversazioni[codicePannello]
+    // essendo un array adesso uso un ciclo for in modo che arrivato a questo punto del ciclo dell oggetto inizi a lavorare sul array in questione
+    for (var i = 0; i < messages.length; i++) {
+        // recupero i du emessaggi
+        singoloMessaggio = messages[i];
+        var testoMessage = singoloMessaggio.testo;
+        var direzioneMessage = singoloMessaggio.direzione;
+        console.log(testoMessage);
+        console.log(direzioneMessage);
+        // a questo punto uso lo stesso procedimento usato per l invio del messaggio normale
+        // clono il messaggio template che ho usato come struttura del messaggio generico nell html che è nascosto con display none
+        var messaggio = $(".messaggio.template").clone();
+        // vado a inserire il testo preso dall array nel punto che mi serve all interno della copia
+        messaggio.children(".testo-messaggio").text(testoMessage);
+        // tolgo la classe che lo rende nascosto, template appunto e aggiungo la classe in base a ciò che ha preso dall array nella chiave direzione
+        messaggio.removeClass("template").addClass(direzioneMessage);
+        // inserisco il messaggio a schermo, basandomi sul data conversazione e la var codice pannello creata nel ciclo dell oggetto
+        $(".conversazione[data-conversazione='"+ codicePannello +"']").append(messaggio);
+    }
 }
