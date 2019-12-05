@@ -76,18 +76,46 @@ function search(){
 }
 // il nome della chat corrente è dato dal nome del contatto active in quel momento
 $(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
-// quando si clicca su una conversazione le classi active che danno lo sfondo grigio ai contatti e il display block ai div delle conversazioni vengono tolti e messi sui nuovi elementi..usati index() per trovare la posizione e eq() per l elemento corrispondente
+
+// quando si clicca su una conversazione le classi active che danno lo sfondo grigio ai contatti e il display block ai div delle conversazioni vengono tolti e messi sui nuovi elementi..
+
+// Metodo di usare index() per trovare la posizione e eq() per l elemento corrispondente
+
+// $(".singolo-contatto").click(function(){
+//     var nuovoContattoPosition = $(this).index();
+//     $(".singolo-contatto.active").removeClass("active");
+//     $(this).addClass("active");
+//     $(".conversazione.active").removeClass("active")
+//     var nuovaConversazioneActive = $(".conversazione").eq(nuovoContattoPosition);
+//     nuovaConversazioneActive.addClass("active");
+//     // anche il nome del contatto in alto di cui cambia la conversazione cambia
+//     $(".nome-informazione h4").text($(this).find("p").text());
+//     // recupero l immagine del contatoo su cui ho cliccato
+//     var immagineContatto = $(this).find("img").attr("src");
+//     // cambio l immagine grazie all attributo recuperato
+//     $(".header-container-right").find("img").attr("src", immagineContatto);
+// })
+// Proviamo il metodo con l assegnazione dei data invece di usare index ed eq,è molto più preciso e non scombina le cose se si cambia l ordine dei contatti
+// aggiungo quindi l attr data-conversazione ad ogni conversazione e al relativo contatto
 $(".singolo-contatto").click(function(){
-    var nuovoContattoPosition = $(this).index();
+    // recupero il data-conversazione del contatto su cui ho cliccato
+    var conversazione_contatto = $(this).attr("data-conversazione");
+    // nascondo il pannello conversazione attivo togliendo la classe(come fatto sopra)
+    $(".conversazione.active").removeClass("active");
+    // recuparo il pannello conversazione con lo stesso data del contatto cliccato e gli assegno la classe active
+    $(".conversazione[data-conversazione='"+ conversazione_contatto +"']").addClass("active");
+    // diamo la classe active dei contatti al contatto cliccato
     $(".singolo-contatto.active").removeClass("active");
     $(this).addClass("active");
-    $(".conversazione.active").removeClass("active")
-    var nuovaConversazioneActive = $(".conversazione").eq(nuovoContattoPosition);
-    nuovaConversazioneActive.addClass("active");
     // anche il nome del contatto in alto di cui cambia la conversazione cambia
-    $(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
+    $(".nome-informazione h4").text($(this).find("p").text());
+    // recupero l immagine del contatoo su cui ho cliccato
+    var immagineContatto = $(this).find("img").attr("src");
+    // cambio l immagine grazie all attributo recuperato
+    $(".header-container-right").find("img").attr("src", immagineContatto);
+
 })
-// per far si di poter interagire con i messaggi creati successivamente bisogna tenere l attenzione sul documento intero e usare on, facciamo comparire e scomparire il menu a tendina,se clicchiamo sullo stesso si chiude nel caso sia aperto,cliccare su uno fa chiudere gli altri
+// per far si di poter interagire con i messaggi creati successivamente bisogna tenere l attenzione su un contenitore genitore oppure direttamente sul documento intero e usare on, facciamo comparire e scomparire il menu a tendina,se clicchiamo sullo stesso si chiude nel caso sia aperto,cliccare su uno fa chiudere gli altri
 $(document).on("click", ".messaggio", function(){
     if ($(this).children(".menu_tendina").is(":visible")) {
         $(".menu_tendina").hide();
@@ -95,9 +123,109 @@ $(document).on("click", ".messaggio", function(){
         $(".menu_tendina").hide();
         $(this).children(".menu_tendina").show();
     }
-
 } )
+
 // usiamo lo stesso metodo per poter cliccare su "delete message"..usiamo la funzione parents per collegarci al parente di questo this che è .delete..parents con la s altrimenti prende l antenatto diretto..usiamo la funzione remove()
 $(document).on("click", ".delete", function(){
     $(this).parents(".messaggio").remove();
 })
+
+
+
+// contenitore madre per tutte le conversazioni!! contiene un contenitore per ogni conversazione...la cui chiave è il codice data della conversazione e il valore è un array di oggetti messaggio
+var pannelliConversazioni = {
+    "c1":[
+        {
+            "testo": "ciao Bill",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c2":[
+        {
+            "testo": "ciao Sandro",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c3":[
+        {
+            "testo": "ciao Carlo",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c4":[
+        {
+            "testo": "ciao Francesca",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c5":[
+        {
+            "testo": "ciao Bob",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c6":[
+        {
+            "testo": "ciao Bryan",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c7":[
+        {
+            "testo": "ciao Lucy",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c8":[
+        {
+            "testo": "ciao John",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+    "c9":[
+        {
+            "testo": "ciao Michele",
+            "direzione":"inviato"
+        },
+        {
+            "testo": "ciao Filippo",
+            "direzione":"ricevuto"
+        }
+    ],
+}
+for (var pannello in pannelliConversazioni) {
+    console.log(pannello);
+    console.log(pannelliConversazioni[pannello]);
+}
