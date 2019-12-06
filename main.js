@@ -27,8 +27,15 @@ function invia_messaggio(){
         var messaggio = $(".messaggio.template").clone();
         // vado a inserire ciò che ho scritto nel punto che mi serve all interno della copia
         messaggio.children(".testo-messaggio").text(messaggioUtente);
+        // usiamo la funzione new date per inserire l ora corrente nel messaggio
+        var d = new Date();
+        var ore, minuti;
+        ore = d.getHours() + ":";
+        minuti = d.getMinutes();
+        messaggio.children(".orario-messaggio").text(ore + minuti);
         // tolgo la classe che lo rende nascosto, template appunto e aggiungo la classe che gli da le caratteristiche di inviato
         messaggio.removeClass("template").addClass("inviato");
+
         // inserisco il messaggio a schermo
         $(".conversazione.active").append(messaggio);
         // resetto l interno dell imput
@@ -38,6 +45,12 @@ function invia_messaggio(){
 function messaggio_risposta(){
         var messaggio = $(".messaggio.template").clone();
         messaggio.children(".testo-messaggio").text("Filippo sei veramente un grande!");
+        // usiamo la funzione new date per inserire l ora corrente nel messaggio
+        var d = new Date();
+        var ore, minuti;
+        ore = d.getHours() + ":";
+        minuti = d.getMinutes();
+        messaggio.children(".orario-messaggio").text(ore + minuti);
         messaggio.removeClass("template").addClass("ricevuto");
         $(".conversazione.active").append(messaggio);
 }
