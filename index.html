@@ -194,7 +194,7 @@
                     </div>
                     <div class="main-container-right">
                         <div class="main-messaggi">
-                            <div data-conversazione = "c1" class="conversazione active">
+                            <!-- <div data-conversazione = "c1" class="conversazione active">
 
                             </div>
                             <div data-conversazione = "c2" class="conversazione">
@@ -220,15 +220,22 @@
                             </div>
                             <div data-conversazione = "c9" class="conversazione">
 
-                            </div>
+                            </div> -->
 
                         </div>
+                        <!-- template per messaggio -->
                         <div class="messaggio template">
                             <span class="testo-messaggio"></span>
                             <span class="orario-messaggio">09:21</span>
                             <div class="menu_tendina">
                                 <span>Message info</span>
                                 <span class="delete">Delete message</span>
+                            </div>
+                        </div>
+                        <!-- template creato per conversazioni, ma come genitore... cosi si può prendere l interno senza dover levare la classe template -->
+                        <div class="template">
+                            <div data-conversazione="c0" class="conversazione">
+
                             </div>
                         </div>
 

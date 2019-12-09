@@ -111,6 +111,7 @@ $(".nome-informazione h4").text($(".singolo-contatto.active").find("p").text());
 // Proviamo il metodo con l assegnazione dei data invece di usare index ed eq,è molto più preciso e non scombina le cose se si cambia l ordine dei contatti
 // aggiungo quindi l attr data-conversazione ad ogni conversazione e al relativo contatto
 $(".singolo-contatto").click(function(){
+    $(this).prependTo(".contatti");
     // recupero il data-conversazione del contatto su cui ho cliccato
     var conversazione_contatto = $(this).attr("data-conversazione");
     // nascondo il pannello conversazione attivo togliendo la classe(come fatto sopra)
@@ -241,6 +242,10 @@ var pannelliConversazioni = {
 // uso ciclo per gli oggetti
 for (var codicePannello in pannelliConversazioni) {
     console.log(pannelliConversazioni[codicePannello]);
+    // creo i contenitori conversazioni sulla base del template apposito creato sull index
+    var contenitore_messaggi = $(".template .conversazione").clone();
+    // gli cambio l attributo che diventa volta per volta il codice pannello,cioè il nome delle chiavi dell oggetto, che sono proprio i data che ci servono
+    contenitore_messaggi.attr("data-conversazione", codicePannello);
     // creo una variabile che mi rappresenta il contenitore dei due messaggi
     var messages = pannelliConversazioni[codicePannello]
     // essendo un array adesso uso un ciclo for in modo che arrivato a questo punto del ciclo dell oggetto inizi a lavorare sul array in questione
@@ -259,6 +264,8 @@ for (var codicePannello in pannelliConversazioni) {
         // tolgo la classe che lo rende nascosto, template appunto e aggiungo la classe in base a ciò che ha preso dall array nella chiave direzione
         messaggio.removeClass("template").addClass(direzioneMessage);
         // inserisco il messaggio a schermo, basandomi sul data conversazione e la var codice pannello creata nel ciclo dell oggetto
-        $(".conversazione[data-conversazione='"+ codicePannello +"']").append(messaggio);
+        contenitore_messaggi.append(messaggio);
     }
+    $(".main-messaggi").append(contenitore_messaggi)
 }
+$(".singolo-contatto.active").trigger("click");
